@@ -14,12 +14,12 @@
 
 /* Light Theme */
 body.light-mode {
-  --bg-color: #f8fafc;
-  --text-color: #0f172a;
-  --secondary-text: #475569;
-  --card-bg: #ffffff;
-  --border-color: #e2e8f0;
-  --primary-color: #0284c7;
+  --bg-color: linear-gradient(rgb(197, 195, 195), #d0d0d1, #bae6fd, #93c5fd);
+  --text-color: #070034;
+  --secondary-text: #080f1b;
+  --card-bg: #cee8fa;
+  --border-color: #024cad;
+  --primary-color: #01211b;
 }
 
 
