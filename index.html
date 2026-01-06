@@ -12,9 +12,6 @@
 </head>
 
 <body>
-
-
-<body>
     <!-- Page Loader -->
     <div class="page-loader" id="pageLoader">
         <div class="loader-spinner"></div>
@@ -112,33 +109,6 @@
 
         <button id="themeToggle" class="theme-toggle">🌙</button>
     </nav>
-    <!-- NAVBAR END -->
-
-<!-- 🔍 SEARCH & FILTER SECTION -->
-<section class="search-filter-container">
-    <input 
-        type="text" 
-        id="searchInput" 
-        placeholder="🔍 Search by name..." 
-        onkeyup="filterCards()"
-        autocomplete="off"
-    >
-    
-    <div class="filter-buttons">
-        <button class="filter-btn active" onclick="filterByRole('all')">All</button>
-        <button class="filter-btn" onclick="filterByRole('developer')">Developers</button>
-        <button class="filter-btn" onclick="filterByRole('contributor')">Contributors</button>
-        <button class="filter-btn" onclick="filterByRole('maintainer')">Maintainers</button>
-    </div>
-    
-    <select id="sortSelect" class="sort-select" onchange="sortCards()">
-        <option value="default">Sort: Default</option>
-        <option value="az">A-Z</option>
-        <option value="za">Z-A</option>
-        <option value="newest">Newest First</option>
-    </select>
-</section>
-    
 
     <!-- NAVBAR END -->
 
@@ -171,30 +141,34 @@
     <h1><span id="typewriter"></span></h1>
     <p class="subtitle">An Open Source Project built by the Community, for the Community.</p>
 
-
-    <!-- 🔍 SEARCH INPUT (ADDED) -->
-    <input type="text" id="searchInput" placeholder="Search contributor by name..." onkeyup="filterCards()"
-        style="padding:10px; width:300px; max-width:90%; margin:20px auto; display:block;">
     <!-- Container that holds all the profile cards -->
     <div class="card-container">
 
         <!-- ADMIN CARD - Don't modify this card -->
         <div class="card">
-            <img src="images/admin.jpg" alt="Admin Photo" class="card-img">
-            <h2>Project Admin</h2>
-            <span class="role">Maintainer</span>
-            <p>"Welcome to the project! Fork this repo and add your card below."</p>
-            <a href="https://github.com/Jayanta2004" class="card-btn" target="_blank">GitHub</a>
+            <div class="card-inner">
+                <img src="images/admin.jpg" alt="Admin Photo" class="card-img">
+                <h2>Project Admin</h2>
+                <span class="role">Maintainer</span>
+                <p>"Welcome to the project! Fork this repo and add your card below."</p>
+                <a href="https://github.com/Jayanta2004" class="card-btn" target="_blank">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+            </div>
         </div>
 
         <!-- 👇 CONTRIBUTORS: START COPYING FROM HERE 👇 -->
         <!-- This is the TEMPLATE card - copy this entire block and paste it below -->
         <div class="card">
-            <img src="images/user.png" alt="User Photo" class="card-img">
-            <h2>Contributor Name</h2>
-            <span class="role">Developer</span>
-            <p>"I learned how to make a Pull Request today!"</p>
-            <a href="#" class="card-btn" target="_blank">View Profile</a>
+            <div class="card-inner">
+                <img src="images/user.png" alt="User Photo" class="card-img">
+                <h2>Contributor Name</h2>
+                <span class="role">Developer</span>
+                <p>"I learned how to make a Pull Request today!"</p>
+                <a href="#" class="card-btn" target="_blank">
+                    <i class="fas fa-external-link-alt"></i> View Profile
+                </a>
+            </div>
         </div>
         <!-- 👆 CONTRIBUTORS: END COPYING HERE 👆 -->
 
@@ -387,8 +361,22 @@
             <a href="https://github.com/Sneha-Amballa" class="card-btn" target="_blank">View Profile</a>
         </div>
 
+        <div class="card">
+            <img src="images/krishnx21.jpg" alt="Krishna Kumar's Photo" class="card-img">
+            <h2>Krishna Kumar</h2>
+            <span class="role">Contributor</span>
+            <p>"Excited to make my first open-source contribution through ECWoC 2026"</p>
+            <a href="https://github.com/krishnx21" class="card-btn" target="_blank">GitHub</a>
+        </div>
 
-        <!-- ADD YOUR NEW CARD ABOVE THIS COMMENT -->
+        <div class="card">
+            <img src="images/Aditya-Jain.jpg" alt="User Photo" class="card-img">
+            <h2>Aditya Jain</h2>
+            <span class="role">Contributor</span>
+            <p>"This is my first open-source contribution through ECWoC thanks for this opportunity very much!"</p>
+            <a href="https://github.com/aditya2006magic" class="card-btn" target="_blank">GitHub</a>
+        </div>
+
         <div class="card">
             <img src="images/Ashish-Agrawal.png" alt="Ashish's Photo" class="card-img">
             <h2>Ashish Agrawal</h2>
@@ -492,22 +480,6 @@
 
     </div> <!-- End of card-container -->
 
-    <!-- PAGINATION CONTROLS -->
-    <div class="pagination-container">
-        <button class="pagination-btn" id="prevBtn" disabled>
-            <span>← Previous</span>
-        </button>
-        <div class="pagination-info">
-            <span id="pageInfo">Page <span id="currentPage">1</span> of <span id="totalPages">1</span></span>
-            <span class="separator">|</span>
-            <span id="itemInfo">Showing <span id="startItem">1</span>-<span id="endItem">9</span> of <span
-                    id="totalItems">0</span></span>
-        </div>
-        <button class="pagination-btn" id="nextBtn">
-            <span>Next →</span>
-        </button>
-    </div>
-
     <!-- FOOTER START -->
     <footer class="footer">
         <p>© 2026 Community Hall of Fame</p>
@@ -518,6 +490,11 @@
     </footer>
     <!-- FOOTER END -->
 
+    <!-- Scroll to Top Button -->
+    <button class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+
     <script>
         const hamburger = document.getElementById("hamburger");
         const navLinks = document.getElementById("navLinks");
@@ -527,12 +504,13 @@
         });
     </script>
 
-    <!-- 🔍 SEARCH FILTER SCRIPT (ADDED) -->
 
     <!-- 🔍 ENHANCED SEARCH & FILTER SCRIPT -->
     <script>
+        let currentFilter = 'all';
+        let currentSearch = '';
+
         function filterCards() {
-            const input = document.getElementById("searchInput").value.toLowerCase();
             currentSearch = document.getElementById("searchInput").value.toLowerCase();
             applyFilters();
         }
@@ -551,10 +529,11 @@
 
         function applyFilters() {
             const cards = document.querySelectorAll(".card");
+            const noResults = document.getElementById("noResults");
+            let visibleCount = 0;
 
             cards.forEach(card => {
                 const name = card.querySelector("h2").innerText.toLowerCase();
-                card.style.display = name.includes(input) ? "block" : "none";
                 const role = card.querySelector(".role").innerText.toLowerCase();
 
                 const matchesSearch = name.includes(currentSearch);
@@ -571,14 +550,38 @@
                     card.style.display = "none";
                 }
             });
+
+            // Show/hide no results message
+            if (visibleCount === 0) {
+                noResults.classList.add('show');
+            } else {
+                noResults.classList.remove('show');
+            }
         }
 
+        // Scroll to Top Functionality
+        function scrollToTop() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        }
 
+        window.addEventListener('scroll', () => {
+            const scrollBtn = document.getElementById('scrollToTop');
+            if (window.pageYOffset > 300) {
+                scrollBtn.classList.add('show');
+            } else {
+                scrollBtn.classList.remove('show');
+            }
+        });
     </script>
 
     <script>
         // ----- TYPEWRITER LOOP -----
         const typewriter = document.getElementById('typewriter');
+        if (!typewriter) return;
+
 
         const phrases = [
             "🚀 Community Hall of Fame",
@@ -635,98 +638,8 @@
             heroHeading.style.transform = `translateY(${scrollY * 0.2}px)`;  // slower
             heroSubtitle.style.transform = `translateY(${scrollY * 0.15}px)`; // slightly slower
         });
-
-        // ----- PAGINATION LOGIC -----
-        const ITEMS_PER_PAGE = 9; // Show 9 cards per page
-        let currentPage = 1;
-        let allCards = [];
-        let totalPages = 1;
-
-        // Initialize pagination on page load
-        function initPagination() {
-            // Get all cards except the admin card (first card)
-            const cardContainer = document.querySelector('.card-container');
-            const adminCard = cardContainer.querySelector('.card:first-child');
-            allCards = Array.from(cardContainer.querySelectorAll('.card')).slice(1); // Skip admin card
-
-            totalPages = Math.ceil(allCards.length / ITEMS_PER_PAGE);
-
-            // Update UI
-            updatePaginationInfo();
-            showPage(currentPage);
-
-            // Add event listeners
-            document.getElementById('prevBtn').addEventListener('click', () => {
-                if (currentPage > 1) {
-                    currentPage--;
-                    showPage(currentPage);
-                    scrollToTop();
-                }
-            });
-
-            document.getElementById('nextBtn').addEventListener('click', () => {
-                if (currentPage < totalPages) {
-                    currentPage++;
-                    showPage(currentPage);
-                    scrollToTop();
-                }
-            });
-        }
-
-        function showPage(page) {
-            const startIndex = (page - 1) * ITEMS_PER_PAGE;
-            const endIndex = startIndex + ITEMS_PER_PAGE;
-
-            // Hide all cards first
-            allCards.forEach(card => {
-                card.style.display = 'none';
-            });
-
-            // Show only cards for current page
-            allCards.slice(startIndex, endIndex).forEach(card => {
-                card.style.display = 'block';
-            });
-
-            updatePaginationInfo();
-        }
-
-        function updatePaginationInfo() {
-            const startItem = (currentPage - 1) * ITEMS_PER_PAGE + 1;
-            const endItem = Math.min(currentPage * ITEMS_PER_PAGE, allCards.length);
-
-            document.getElementById('currentPage').textContent = currentPage;
-            document.getElementById('totalPages').textContent = totalPages;
-            document.getElementById('startItem').textContent = startItem;
-            document.getElementById('endItem').textContent = endItem;
-            document.getElementById('totalItems').textContent = allCards.length;
-
-            // Update button states
-            const prevBtn = document.getElementById('prevBtn');
-            const nextBtn = document.getElementById('nextBtn');
-
-            prevBtn.disabled = currentPage === 1;
-            nextBtn.disabled = currentPage === totalPages;
-        }
-
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
-
-        // Initialize pagination when DOM is loaded
-        document.addEventListener('DOMContentLoaded', initPagination);
     </script>
 
-<script>
-document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.card');
-    cards.forEach((card, i) => {
-        setTimeout(() => card.classList.add('revealed'), i * 60);
-    });
-});
-</script>
     <script>
         /* ---------- ENHANCED SORT CARDS SCRIPT ---------- */
         const container = document.querySelector(".card-container");
@@ -889,7 +802,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     </script>
 
-</html>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             const cards = document.querySelectorAll('.card');
